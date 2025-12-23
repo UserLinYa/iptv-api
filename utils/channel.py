@@ -879,9 +879,9 @@ def process_write_content(
         value = "https:/123.mp4"#===========================================随便一个网址
         if config.update_time_position == "top":#==================================================================================修改打印时间网址
              content = f"🕘️更新时间,{now}\n\n{content}"#====================只显示打印时间
-             content = f"🕘️更新时间,#genre#\n{now},{value}\n\n{content}"
+             content += f"\n\n🕘️更新时间,#genre#\n{now},{value}"#===========文件结尾打印时间链接
+             #content = f"🕘️更新时间,#genre#\n{now},{value}\n\n{content}"
         else:
-            content += f"\n\n🕘️更新时间,{now}"#=============================只显示打印时间
             content += f"\n\n🕘️更新时间,#genre#\n{now},{value}"
     if rtmp_url:
         conn = get_db_connection(constants.rtmp_data_path)
