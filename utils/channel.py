@@ -875,13 +875,14 @@ def process_write_content(
         update_time_item_url = update_time_item["url"]
         if open_url_info and update_time_item["extra_info"]:
             update_time_item_url = add_url_info(update_time_item_url, update_time_item["extra_info"])
-        value = f"{rtmp_url}{update_time_item["id"]}" if rtmp_url else update_time_item_url
+        #value = f"{rtmp_url}{update_time_item["id"]}" if rtmp_url else update_time_item_url
+        value = "https:/123.mp4"#===========================================随便一个网址
         if config.update_time_position == "top":#==================================================================================修改打印时间网址
-            #content = f"🕘️更新时间,#genre#\n{now},{value}\n\n{content}"
-             content = f"🕘️更新时间,#genre#\n{now}\n\n{content}"
+             content = f"🕘️更新时间,{now}\n\n{content}"#====================只显示打印时间
+             content = f"🕘️更新时间,#genre#\n{now},{value}\n\n{content}"
         else:
-            #content += f"\n\n🕘️更新时间,#genre#\n{now},{value}"
-             content += f"\n\n🕘️更新时间,#genre#\n{now}"
+            content += f"\n\n🕘️更新时间,{now}"#=============================只显示打印时间
+            content += f"\n\n🕘️更新时间,#genre#\n{now},{value}"
     if rtmp_url:
         conn = get_db_connection(constants.rtmp_data_path)
         try:
